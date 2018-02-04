@@ -1,18 +1,40 @@
 button {
-	color: #1a237e;
-	background-color: #009688;
+	color: #000000;
+	background-color: #ffffff;
 	font-size: 16px;
-	padding: 0.5em 1em;
+	padding: 5px;
+	border-radius: 10px;
+	border: 2px solid #000000;
 }
 
 table {
-	border: 1px solid red;
+	border: 2px solid #000000;
 }
 tr {
 	background-color: #ccc;
 }
+th, td{
+	padding: 5px;
+}
 
 input {
 	font-size: 16px;
-	padding: 0.5em 1em;
+	padding: 5px;
+}
+
+input[type=submit]{
+	color: #000000;
+	background-color: #ffffff;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 10px;
+	border: 2px solid #000000;
+}
+
+.container{
+	display: flex;
+}
+
+.fill{
+	flex: 1;
 }
