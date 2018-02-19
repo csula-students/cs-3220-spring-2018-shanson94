@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Goblin Mine</title>
+	<link rel="stylesheet" href="app.css">
+</head>
+<body>
+	<h1>Goblin Mine</h1>
+
+	<div>
+		<p class="story">
+			Click button to mine ore <br>
+			Goblins rush to your mine seeking work <br>
+			Your ore is regarded as the best that can be mined <br>
+		</p>
+	</div>
+
+	<div class="container">
+		<div class="fill">
+			<h2>Ore:
+				<span id="oreCounter">
+					0
+				</span>
+			</h2>
+		</div>
+
+		<button id="clicker">Mine Ore</button>
+	</div>
+
+	<div class="container">
+		
+		<div class="generator">
+			<h3 class="center">Pickaxe</h3>
+
+			<p class="center">It mines ore</p>
+
+			<button>10 Ore</button>
+		</div>
+		
+		
+		<div class="generator">
+			<h3 class="center">Goblin</h3>
+
+			<p class="center">Goblin miner to help mine ore</p>
+
+			<button>50 ore</button>
+		</div>
+
+		<div class="generator">
+			<h3 class="center">Machine Miner</h3>
+
+			<p class="center">Machine built by goblins to mine ore</p>
+
+			<button>500 ore</button>
+		</div>
+	</div>
+
+
+	<script>
+	    window.incrementalGame = {
+	        state: {
+	            counter: 0
+	        }
+	     };
+	</script>
+
+	<script src="app.js"></script>
+</body>
+</html>
