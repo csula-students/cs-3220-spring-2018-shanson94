@@ -5,16 +5,10 @@ export default function reducer (state, action) {
 		return state;
 
 	case 'BUY_GENERATOR':
+		return state;
 
-		if(data-id==="0"){
-			state.type = 'GENERATOR';
-			state.name = 'Pickaxe';
-			state.baseCost = state.getCost();
-			state.quantity++;
-			state.counter = state.counter - state.baseCost;
-			window.state.counter = state.counter;
-			state.unlockValue = state.baseCost; 
-		}
+	case 'BUTTON_CLICK':
+		state.counter++;
 		return state;
 
 	default:

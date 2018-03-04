@@ -171,7 +171,31 @@ function main() {
 	const initialState = {
 		example: 'Hello custom element',
 		counter: 0,
-		generators: [],
+		generators: [{
+			type: 'autonomous',
+			name: 'Pickaxe',
+			description: 'It mines ore',
+			rate: 5,
+			quantity: 0,
+			cost: 10,
+			unlock: 0
+		}, {
+			type: 'autonomous',
+			name: 'Goblin',
+			description: 'Goblin miner to help mine ore',
+			rate: 10,
+			quantity: 0,
+			cost: 50,
+			unlock: 50
+		}, {
+			type: 'autonomous',
+			name: 'Machine Miner',
+			description: 'Machine built by goblins to mine ore',
+			rate: 50,
+			quantity: 0,
+			cost: 500,
+			unlock: 500
+		}],
 		story: []
 	};
 
@@ -741,15 +765,10 @@ function reducer(state, action) {
 			return state;
 
 		case 'BUY_GENERATOR':
+			return state;
 
-			state.type = 'GENERATOR';
-			state.name = 'Pickaxe';
-			state.baseCost = state.getCost();
-			state.quantity++;
-			state.counter = state.counter - state.baseCost;
-			window.state.counter = state.counter;
-			state.unlockValue = state.baseCost;
-
+		case 'BUTTON_CLICK':
+			state.counter++;
 			return state;
 
 		default:
@@ -773,11 +792,21 @@ exports.default = function (store) {
 		constructor() {
 			super();
 			this.store = store;
+		}
 
-			this.onStateChange = this.handleStateChange.bind(this);
+		connectedCallback() {
+			console.log('ExampleComponent#onConnectedCallback');
+			this.innerHTML = '<button>Mine Ore</button>';
+			this.addEventListener('click', () => {
+				this.store.dispatch({
+					type: 'BUTTON_CLICK'
+				});
+			});
+		}
 
-			// TODO: add click event to increment counter
-			// hint: use "store.dispatch" method (see example component)
+		disconnectedCallback() {
+			console.log('ExampleComponent#onDisconnectedCallback');
+			this.store.unsubscribe(this.onStateChange);
 		}
 	};
 };
@@ -798,17 +827,17 @@ exports.default = function (store) {
 		constructor() {
 			super();
 			this.store = store;
-			// TODO: render counter inner HTML based on the store state
 
 			this.onStateChange = this.handleStateChange.bind(this);
 		}
 
 		handleStateChange(newState) {
 			console.log('CounterComponent#stateChange', this, newState);
-			// TODO: update inner HTML based on the new state
+			this.innerHTML = `Ore: ${newState.counter}`;
 		}
 
 		connectedCallback() {
+			this.innerHTML = 'Ore: 0';
 			this.store.subscribe(this.onStateChange);
 		}
 
@@ -868,9 +897,29 @@ exports.default = function (store) {
 
 /***/ }),
 /* 10 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: C:/Users/User/cs3220/cs-3220-spring-2018-shanson94/lab3/client/src/views/generator.js: Unexpected token, expected ; (20:22)\n\n  18 |             });\n  19 | \n> 20 | \t\t\thandleStateChange(){\n     | \t\t\t                   ^\n  21 | \t\t\t\tthis.store.subscribe(newState);\n  22 | \t\t\t}\n  23 | \n");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+exports.default = function (store) {
+	return class GeneratorComponent extends window.HTMLElement {
+		constructor() {
+			super();
+			this.store = store;
+
+			// TODO: render generator initial view
+
+			// TODO: subscribe to store on change event
+
+			// TODO: add click event
+		}
+	};
+};
 
 /***/ }),
 /* 11 */

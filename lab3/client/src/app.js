@@ -77,7 +77,38 @@ function main () {
 	const initialState = {
 		example: 'Hello custom element',
 		counter: 0,
-		generators: [],
+		generators: [
+			{
+				type: 'autonomous',
+				name: 'Pickaxe',
+				description: 'It mines ore',
+				rate: 5,
+				quantity: 0,
+				cost: 10,
+				unlock: 0
+			},
+
+			{
+				type: 'autonomous',
+				name: 'Goblin',
+				description: 'Goblin miner to help mine ore',
+				rate: 10,
+				quantity: 0,
+				cost: 50,
+				unlock: 50
+			},
+
+			{
+				type: 'autonomous',
+				name: 'Machine Miner',
+				description: 'Machine built by goblins to mine ore',
+				rate: 50,
+				quantity: 0,
+				cost: 500,
+				unlock: 500
+			}
+
+		],
 		story: []
 	};
 

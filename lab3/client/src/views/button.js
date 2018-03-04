@@ -3,11 +3,21 @@ export default function (store) {
 		constructor () {
 			super();
 			this.store = store;
+		}
 
-			this.onStateChange = this.handleStateChange.bind(this);
+		connectedCallback () {
+			console.log('ExampleComponent#onConnectedCallback');
+			this.innerHTML = '<button>Mine Ore</button>';
+			this.addEventListener('click', () => {
+				this.store.dispatch({
+					type: 'BUTTON_CLICK'
+				});
+			});
+		}
 
-			// TODO: add click event to increment counter
-			// hint: use "store.dispatch" method (see example component)
+		disconnectedCallback () {
+			console.log('ExampleComponent#onDisconnectedCallback');
+			this.store.unsubscribe(this.onStateChange);
 		}
 	};
 }

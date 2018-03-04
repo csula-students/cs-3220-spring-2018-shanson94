@@ -8,6 +8,16 @@ button {
 	margin: 2%;
 }
 
+game-button button{
+	color: #000000;
+	background-color: #ffffff;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 10px;
+	border: 2px solid #000000;
+	margin: 2%;
+}
+
 .center{
 	text-align: center;
 }
