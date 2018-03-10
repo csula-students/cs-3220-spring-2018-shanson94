@@ -18,60 +18,19 @@
 
 	<div class="container">
 		<div class="fill">
-			<h2>Ore:
-				<span id="oreCounter">
-					0
-				</span>
-			</h2>
+			<game-counter></game-counter>
 		</div>
 
-		<button id="clicker">Mine Ore</button>
+		<game-button></game-button>
 	</div>
 
-	<div class="container">
-
-			<div class="generator">
-				<h3 class="center">Pickaxe</h3>
-
-				<p class="center">It mines ore</p>
-
-				<button>10 Ore</button>
-			</div>
-
-		
-
-			<div class="generator">
-				<h3 class="center">Goblin</h3>
-
-				<p class="center">Goblin miner to help mine ore</p>
-
-				<button>50 ore</button>
-			</div>
-
-
-			<div class="generator">
-				<h3 class="center">Machine Miner</h3>
-
-				<p class="center">Machine built by goblins to mine ore</p>
-
-				<button>500 ore</button>
-			</div>
+	
+	<div class="row">
+		<game-generator class="generator" data-id="0"></game-generator>
+		<game-generator class="generator" data-id="1"></game-generator>
+		<game-generator class="generator" data-id="2"></game-generator>
 	</div>
 
-
-	<div>
-	<game-button></game-button>
-</div>
-
-	<game-counter></game-counter>
-
-	<script>
-	    window.incrementalGame = {
-	        state: {
-	            counter: 0
-	        }
-	     };
-	</script>
 
 	<script src="app.js"></script>
 	<script src="dest/app.bundle.js"></script>

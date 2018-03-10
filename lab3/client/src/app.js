@@ -83,9 +83,9 @@ function main () {
 				name: 'Pickaxe',
 				description: 'It mines ore',
 				rate: 5,
+				baseCost: 10,
 				quantity: 0,
-				cost: 10,
-				unlock: 0
+				unlockValue: 0
 			},
 
 			{
@@ -93,9 +93,9 @@ function main () {
 				name: 'Goblin',
 				description: 'Goblin miner to help mine ore',
 				rate: 10,
+				baseCost: 50,
 				quantity: 0,
-				cost: 50,
-				unlock: 50
+				unlockValue: 50
 			},
 
 			{
@@ -103,9 +103,9 @@ function main () {
 				name: 'Machine Miner',
 				description: 'Machine built by goblins to mine ore',
 				rate: 50,
+				baseCost: 500,
 				quantity: 0,
-				cost: 500,
-				unlock: 500
+				unlockValue: 500
 			}
 
 		],

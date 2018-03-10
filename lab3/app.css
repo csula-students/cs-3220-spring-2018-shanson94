@@ -22,11 +22,19 @@ game-button button{
 	text-align: center;
 }
 
+.row{
+	display: flex;  
+    flex-direction: row;
+	align-content: center;
+}
+
+
 .generator{
-	border: 2px solid #000000;
-	margin: 10%;
-	width: 10em;
-	height: 10em;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(71, 71, 70);
+        padding: 1em;
+        margin: 1rem;
 }
 
 .buy{

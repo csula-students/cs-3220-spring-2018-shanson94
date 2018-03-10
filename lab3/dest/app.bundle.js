@@ -176,25 +176,25 @@ function main() {
 			name: 'Pickaxe',
 			description: 'It mines ore',
 			rate: 5,
+			baseCost: 10,
 			quantity: 0,
-			cost: 10,
-			unlock: 0
+			unlockValue: 0
 		}, {
 			type: 'autonomous',
 			name: 'Goblin',
 			description: 'Goblin miner to help mine ore',
 			rate: 10,
+			baseCost: 50,
 			quantity: 0,
-			cost: 50,
-			unlock: 50
+			unlockValue: 50
 		}, {
 			type: 'autonomous',
 			name: 'Machine Miner',
 			description: 'Machine built by goblins to mine ore',
 			rate: 50,
+			baseCost: 500,
 			quantity: 0,
-			cost: 500,
-			unlock: 500
+			unlockValue: 500
 		}],
 		story: []
 	};
@@ -765,6 +765,22 @@ function reducer(state, action) {
 			return state;
 
 		case 'BUY_GENERATOR':
+
+			for (var i = 0; i < state.generators.length; i++) {
+
+				if (action.payload.name == state.generators[i].name) {
+					var rt = Math.pow(1 + 0.05, state.generators[i].quantity);
+					var xt = state.generators[i].baseCost * rt;
+					var cost = Math.round(xt * 100) / 100;
+
+					if (state.counter >= cost) {
+						state.counter = state.counter - cost;
+						state.generators[i].quantity++;
+						return state;
+					} else return state;
+				}
+			}
+
 			return state;
 
 		case 'BUTTON_CLICK':
@@ -911,13 +927,56 @@ exports.default = function (store) {
 		constructor() {
 			super();
 			this.store = store;
-
-			// TODO: render generator initial view
-
-			// TODO: subscribe to store on change event
-
-			// TODO: add click event
+			this.connectedCallBack();
+			this.onStateChange = this.handleStateChange.bind(this);
 		}
+
+		handleStateChange(newState) {
+			this.innerHTML = `<div>
+				<div class="center">${newState.generators[this.dataset.id].name}</div>
+				<div class="center">Quantity: ${newState.generators[this.dataset.id].quantity}</div>
+
+				<p class="center">${newState.generators[this.dataset.id].description}</p>
+				<p class="center">Rate: ${newState.generators[this.dataset.id].rate}</p>
+				<button class="center">Buy ${newState.generators[this.dataset.id].name}</button>
+			</div>`;
+
+			this.querySelector('button').addEventListener('click', () => {
+				this.store.dispatch({
+					type: 'BUY_GENERATOR',
+					payload: {
+						name: newState.generators[this.dataset.id].name
+					}
+				});
+			});
+		}
+
+		connectedCallBack() {
+			this.innerHTML = `<div>
+				<div class="center">${this.store.state.generators[this.dataset.id].name}</div>
+				<div class="center">Quantity: ${this.store.state.generators[this.dataset.id].quantity}</div>
+
+				<p class="center">${this.store.state.generators[this.dataset.id].description}</p>
+				<p class="center">Rate: ${this.store.state.generators[this.dataset.id].rate}</p>
+				<button class="center">Buy ${this.store.state.generators[this.dataset.id].name}</button>
+			</div>`;
+
+			this.querySelector('button').addEventListener('click', () => {
+				this.store.dispatch({
+					type: 'BUY_GENERATOR',
+					payload: {
+						name: this.store.state.generators[this.dataset.id].name
+					}
+				});
+			});
+			this.store.subscribe(this.onStateChange);
+		}
+
+		disconnectedCallback() {
+
+			this.store.unsubscribe(this.onStateChange);
+		}
+
 	};
 };
 
