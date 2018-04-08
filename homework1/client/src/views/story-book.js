@@ -29,19 +29,15 @@ export default function (store) {
 		}
 
 		connectedCallback () {
-			this.innerHTML = `<div class = "story"><h1>Story</h1></br></div>`;
-			var storyPar = window.document.createElement('div');
-			for (var i = 0; i < store.state.story.length; i++){
-			const story = new Story(store.state.story[i]);
-				if(story.state == "visible"){
-					var storyText = window.document.createElement('div');
-					storyText.innerHTML = story.description;
-				}
-			storyPar.appendChild(storyText);
-			const br = window.document.createElement('br');
-			storyPar.appendChild(br);	
-		}
-			this.appendChild(storyPar);
+			const html = '<div class="story-container">';
+			html += this.store.state.map(story => {
+				return `<div class="story">
+				    ${story.name}
+				</div>`;
+			});
+			html += '</div>';
+
+			this.innerHTML = html;
 
 			this.store.subscribe(this.onStateChange);
 		}
