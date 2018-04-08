@@ -1,0 +1,56 @@
+button {
+	color: #000000;
+	background-color: #ffffff;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 10px;
+	border: 2px solid #000000;
+	margin: 2%;
+}
+
+game-button button{
+	color: #000000;
+	background-color: #ffffff;
+	font-size: 16px;
+	padding: 5px;
+	border-radius: 10px;
+	border: 2px solid #000000;
+	margin: 2%;
+}
+
+.center{
+	text-align: center;
+}
+
+.row{
+	display: flex;  
+    flex-direction: row;
+	align-content: center;
+}
+
+
+.generator{
+        display: flex;
+        flex-direction: column;
+        border: 2px solid rgb(71, 71, 70);
+        padding: 1em;
+        margin: 1rem;
+}
+
+.buy{
+	display: right;
+}
+
+.container{
+	display: flex;
+}
+
+.fill{
+	flex: 1;
+}
+
+.story{
+	border: 2px solid #000000;
+	background-color: #A9A9A9;
+	color: #ffffff;
+}
