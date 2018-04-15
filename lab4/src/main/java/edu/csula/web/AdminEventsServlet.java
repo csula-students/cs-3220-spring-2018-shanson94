@@ -40,7 +40,7 @@ public class AdminEventsServlet extends HttpServlet {
 				html+=	"<head>";
 				html+=	"<meta charset=\"UTF-8\">";
 				html+=	"<title>CS 3220 Clicker Game</title>";
-				html+=	"<link rel=\"stylesheet\" href=\"styles.css\">";
+				html+=	"<link rel=\"stylesheet\" href=\"src/main/webapps/app.css\">";
 				html+=	"</head>";
 				html+=	"<body>";
 				html+=	"<h1>Clicker Game!</h1>";
